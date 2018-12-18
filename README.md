@@ -18,6 +18,7 @@
 * simple sprite kit game
 * uses `SKShapeNode` & `UIBezierPath`
 * uses `AVAudioPlayer`
+* uses `SKAction.group` & `SKAction.sequence`
 
 ## License
 
