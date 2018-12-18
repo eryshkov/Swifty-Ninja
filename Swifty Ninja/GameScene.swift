@@ -8,6 +8,15 @@
 
 import SpriteKit
 import GameplayKit
+import AVFoundation
+
+enum SequenceType: CaseIterable {
+    case oneNoBomb, one, twoWithOneBomb, two, three, four, chain, fastChain
+}
+
+enum ForceBomb {
+    case never, always, random
+}
 
 class GameScene: SKScene {
     
@@ -27,6 +36,12 @@ class GameScene: SKScene {
     var activeSlicePoints = [CGPoint]()
     
     var isSwooshSoundActive = false
+    
+    var activeEnemies = [SKSpriteNode]()
+    
+    var bombSoundEffect: AVAudioPlayer!
+    
+    
     
     func redrawActiveSlice() {
         if activeSlicePoints.count < 2 {
@@ -87,6 +102,75 @@ class GameScene: SKScene {
         
         addChild(activeSliceBG)
         addChild(activeSliceFG)
+    }
+    
+    func createEnemy(forceBomb: ForceBomb = .random) {
+        var enemy: SKSpriteNode
+        
+        var enemyType = Int.random(in: 0...6)
+        
+        if forceBomb == .never {
+            enemyType = 1
+        }else if forceBomb == .always {
+            enemyType = 0
+        }
+        
+        if enemyType == 0 {
+            // bomb code goes here
+            enemy = SKSpriteNode()
+            enemy.zPosition = 1
+            enemy.name = "bombContainer"
+            
+            let bombImage = SKSpriteNode(imageNamed: "sliceBomb")
+            bombImage.name = "bomb"
+            enemy.addChild(bombImage)
+            
+            if bombSoundEffect != nil {
+                bombSoundEffect.stop()
+                bombSoundEffect = nil
+            }
+            
+            let path = Bundle.main.path(forResource: "sliceBombFuse.caf", ofType: nil)!
+            let url = URL(fileURLWithPath: path)
+            let sound = try! AVAudioPlayer(contentsOf: url)
+            bombSoundEffect = sound
+            sound.play()
+            
+            let emitter = SKEmitterNode(fileNamed: "sliceFuse")!
+            emitter.position = CGPoint(x: 76, y: 64)
+            enemy.addChild(emitter)
+        }else{
+            enemy = SKSpriteNode(imageNamed: "penguin")
+            run(SKAction.playSoundFileNamed("launch.caf", waitForCompletion: false))
+            enemy.name = "enemy"
+        }
+        
+        //position goes here
+        let randomPosition = CGPoint(x: Int.random(in: 64...960), y: -128)
+        enemy.position = randomPosition
+        
+        let randomAngularVelocity = CGFloat.random(in: -6...6) / 2.0
+        var randomXVelocity = 0
+        
+        if randomPosition.x < 256 {
+            randomXVelocity = Int.random(in: 8...15)
+        }else if randomPosition.x < 512 {
+            randomXVelocity = Int.random(in: 3...5)
+        }else if randomPosition.x < 768 {
+            randomXVelocity = -Int.random(in: 3...5)
+        }else{
+            randomXVelocity = -Int.random(in: 8...15)
+        }
+        
+        let randomYVelocity = Int.random(in: 24...32)
+        
+        enemy.physicsBody = SKPhysicsBody(circleOfRadius: 64)
+        enemy.physicsBody?.velocity = CGVector(dx: randomXVelocity * 40, dy: randomYVelocity * 40)
+        enemy.physicsBody?.angularVelocity = randomAngularVelocity
+        enemy.physicsBody?.collisionBitMask = 0
+        
+        addChild(enemy)
+        activeEnemies.append(enemy)
     }
     
     func playSwooshSound() {
@@ -155,5 +239,24 @@ class GameScene: SKScene {
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         touchesEnded(touches, with: event)
+    }
+    
+    override func update(_ currentTime: TimeInterval) {
+        var bombCount = 0
+        
+        for node in activeEnemies {
+            if node.name == "bombContainer" {
+                bombCount += 1
+                break
+            }
+        }
+        
+        if bombCount == 0 {
+            // no bombs - stop the fuse sound
+            if bombSoundEffect != nil {
+                bombSoundEffect.stop()
+                bombSoundEffect = nil
+            }
+        }
     }
 }
