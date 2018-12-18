@@ -26,9 +26,28 @@ class GameScene: SKScene {
     
     var activeSlicePoints = [CGPoint]()
     
+    var isSwooshSoundActive = false
     
     func redrawActiveSlice() {
+        if activeSlicePoints.count < 2 {
+            activeSliceBG.path = nil
+            activeSliceFG.path = nil
+            return
+        }
         
+        while activeSlicePoints.count > 12 {
+            activeSlicePoints.removeFirst()
+        }
+        
+        let path = UIBezierPath()
+        path.move(to: activeSlicePoints[0])
+        
+        for i in 1 ..< activeSlicePoints.count {
+            path.addLine(to: activeSlicePoints[i])
+        }
+        
+        activeSliceBG.path = path.cgPath
+        activeSliceFG.path = path.cgPath
     }
     
     func createScore() {
@@ -68,6 +87,10 @@ class GameScene: SKScene {
         
         addChild(activeSliceBG)
         addChild(activeSliceFG)
+    }
+    
+    func playSwooshSound() {
+        
     }
     
     override func didMove(to view: SKView) {
@@ -111,6 +134,10 @@ class GameScene: SKScene {
         
         activeSlicePoints.append(location)
         redrawActiveSlice()
+        
+        if !isSwooshSoundActive {
+            playSwooshSound()
+        }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
