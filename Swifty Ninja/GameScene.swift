@@ -90,7 +90,15 @@ class GameScene: SKScene {
     }
     
     func playSwooshSound() {
+        isSwooshSoundActive = true
+        let randomNumber = Int.random(in: 1 ... 3)
+        let soundName = "swoosh\(randomNumber).caf"
         
+        let swooshSound = SKAction.playSoundFileNamed(soundName, waitForCompletion: true)
+        
+        run(swooshSound) {[unowned self] in
+            self.isSwooshSoundActive = false
+        }
     }
     
     override func didMove(to view: SKView) {
