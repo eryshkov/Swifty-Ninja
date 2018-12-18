@@ -12,11 +12,12 @@
 <img src="https://img.shields.io/badge/licence-MIT-lightgray.svg" alt="Licence MIT"/>
 </p>
 
-[Demo video here]()
+[Demo video here](https://youtu.be/4QKvRjDeVnU)
 
 ## Main functionality
 * simple sprite kit game
-* 
+* uses `SKShapeNode` & `UIBezierPath`
+* uses `AVAudioPlayer`
 
 ## License
 

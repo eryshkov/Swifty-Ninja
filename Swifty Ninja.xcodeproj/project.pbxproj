@@ -25,6 +25,8 @@
 		5C626B8221C8EFFF00E2A042 /* explosion.caf in Resources */ = {isa = PBXBuildFile; fileRef = 5C626B7721C8EFFF00E2A042 /* explosion.caf */; };
 		5C626B8321C8EFFF00E2A042 /* launch.caf in Resources */ = {isa = PBXBuildFile; fileRef = 5C626B7821C8EFFF00E2A042 /* launch.caf */; };
 		5C626B8421C8EFFF00E2A042 /* sliceBombFuse.caf in Resources */ = {isa = PBXBuildFile; fileRef = 5C626B7921C8EFFF00E2A042 /* sliceBombFuse.caf */; };
+		5C626B8721C9A0E700E2A042 /* 2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 5C626B8521C9A0E700E2A042 /* 2.jpeg */; };
+		5C626B8821C9A0E700E2A042 /* 1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 5C626B8621C9A0E700E2A042 /* 1.jpeg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +51,8 @@
 		5C626B7721C8EFFF00E2A042 /* explosion.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = explosion.caf; sourceTree = "<group>"; };
 		5C626B7821C8EFFF00E2A042 /* launch.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = launch.caf; sourceTree = "<group>"; };
 		5C626B7921C8EFFF00E2A042 /* sliceBombFuse.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sliceBombFuse.caf; sourceTree = "<group>"; };
+		5C626B8521C9A0E700E2A042 /* 2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpeg; sourceTree = "<group>"; };
+		5C626B8621C9A0E700E2A042 /* 1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpeg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,8 @@
 		5C626B4121C8EEB700E2A042 /* screens */ = {
 			isa = PBXGroup;
 			children = (
+				5C626B8621C9A0E700E2A042 /* 1.jpeg */,
+				5C626B8521C9A0E700E2A042 /* 2.jpeg */,
 			);
 			path = screens;
 			sourceTree = "<group>";
@@ -185,12 +191,14 @@
 				5C626B7A21C8EFFF00E2A042 /* swoosh1.caf in Resources */,
 				5C626B8321C8EFFF00E2A042 /* launch.caf in Resources */,
 				5C626B2B21C8EDCA00E2A042 /* GameScene.sks in Resources */,
+				5C626B8821C9A0E700E2A042 /* 1.jpeg in Resources */,
 				5C626B8221C8EFFF00E2A042 /* explosion.caf in Resources */,
 				5C626B7D21C8EFFF00E2A042 /* sliceHitBomb.sks in Resources */,
 				5C626B7E21C8EFFF00E2A042 /* swoosh2.caf in Resources */,
 				5C626B3621C8EDCC00E2A042 /* Assets.xcassets in Resources */,
 				5C626B3921C8EDCC00E2A042 /* LaunchScreen.storyboard in Resources */,
 				5C626B7B21C8EFFF00E2A042 /* sliceFuse.sks in Resources */,
+				5C626B8721C9A0E700E2A042 /* 2.jpeg in Resources */,
 				5C626B8021C8EFFF00E2A042 /* wrong.caf in Resources */,
 				5C626B7F21C8EFFF00E2A042 /* swoosh3.caf in Resources */,
 				5C626B8121C8EFFF00E2A042 /* whack.caf in Resources */,
