@@ -28,6 +28,7 @@
 		5C626B3521C8EDCC00E2A042 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C626B3821C8EDCC00E2A042 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5C626B3A21C8EDCC00E2A042 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5C626B4021C8EEAA00E2A042 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +45,8 @@
 		5C626B1C21C8EDCA00E2A042 = {
 			isa = PBXGroup;
 			children = (
+				5C626B4121C8EEB700E2A042 /* screens */,
+				5C626B4021C8EEAA00E2A042 /* README.md */,
 				5C626B2721C8EDCA00E2A042 /* Swifty Ninja */,
 				5C626B2621C8EDCA00E2A042 /* Products */,
 			);
@@ -71,6 +74,13 @@
 				5C626B3A21C8EDCC00E2A042 /* Info.plist */,
 			);
 			path = "Swifty Ninja";
+			sourceTree = "<group>";
+		};
+		5C626B4121C8EEB700E2A042 /* screens */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = screens;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
